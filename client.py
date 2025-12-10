@@ -88,10 +88,12 @@ while True:
         continue  # Блокує гру після перемоги
 
     if game_state:
-        screen.fill((30, 30, 30))
-        draw.rect(screen, (0, 255, 0), (20, game_state['paddles']['0'], 20, 100))
-        draw.rect(screen, (255, 0, 255), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
-        draw.circle(screen, (255, 255, 255), (game_state['ball']['x'], game_state['ball']['y']), 10)
+        back = image.load("backg.png")
+        back = transform.scale(back, (800, 600))
+        screen.blit(back, (0, 0))
+        draw.rect(screen, (255, 0, 0), (20, game_state['paddles']['0'], 20, 100))
+        draw.rect(screen, (0, 255, 0), (WIDTH - 40, game_state['paddles']['1'], 20, 100))
+        draw.circle(screen, (43, 187, 248), (game_state['ball']['x'], game_state['ball']['y']), 10)
         score_text = font_main.render(f"{game_state['scores'][0]} : {game_state['scores'][1]}", True, (255, 255, 255))
         screen.blit(score_text, (WIDTH // 2 -25, 20))
 
